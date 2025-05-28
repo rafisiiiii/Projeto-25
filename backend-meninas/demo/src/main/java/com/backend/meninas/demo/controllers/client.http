@@ -1,0 +1,39 @@
+@baseUrl = http://localhost:8080/client
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhcGktamF2YS1tZW5pbmFzIiwiZXhwIjoxNzQ4MDQwNjYxLCJzdWIiOiI0Njk1ZGIzZS03MjNjLTQ1Y2QtODI5Ni05NDJhNGQ2ODUyNWQifQ.xBZB2mRTFNJ6oaXZvW_0HnleYA9dJWMuSLEsCwPgvwg
+###
+# @name register_client
+POST {{baseUrl}}/register
+Authorization: Bearer {{token}}
+Content-Type: application/json 
+
+{
+  "name": "Empresa Exemplo",
+  "address": "123 Main Street",
+  "state": "SP",
+  "cityCode": "3550308",
+  "tradeName": "Exemplo Ltda",
+  "neighborhood": "Centro",
+  "zipCode": "01000000",
+  "city": "São Paulo",
+  "areaCode": "11",
+  "phone": "999999999",
+  "type": "J",
+  "email": "contato3@exemplo.com",
+  "country": "Brasil",
+  "taxId": "12465678001365",
+  "openingDate": "2020-01-01",
+  "homepage": "https://www.exemplo.com",
+  "storeCode": "01"
+}
+
+###
+
+# @name list_client
+GET {{baseUrl}}/list
+Authorization: Bearer {{token}}
+
+###
+
+# @name delete_client
+DELETE {{baseUrl}}/:
+Authorization: Bearer {{token}}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Confirmação de Cadastro - Maiconsoft</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      .container {
+        margin: 0 auto;
+        padding: 20px;
+        max-width: 600px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+      h2 {
+        color: #0073e6;
+      }
+      p {
+        margin: 8px 0;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Cadastro realizado com sucesso!</h2>
+      <p>
+        O cliente <strong th:text="${name}">Nome do Cliente</strong> foi
+        cadastrado na plataforma <strong>Maiconsoft</strong>.
+      </p>
+      <p><strong>Código:</strong> <span th:text="${code}">000000</span></p>
+
+      <p>
+        <strong th:text="${type == 'J'} ? 'CNPJ:' : 'CPF:'">Documento:</strong>
+        <span th:text="${formattedTaxId}">00.000.000/0000-00</span>
+      </p>
+
+      <p th:if="${type == 'J'}">
+        <strong>Nome Fantasia:</strong>
+        <span th:text="${tradeName}">Empresa X</span>
+      </p>
+
+      <p>
+        <strong
+          th:text="${type == 'J'} ? 'Data de Abertura:' : 'Data de Nascimento:'"
+          >Data:</strong
+        >
+        <span th:text="${openingDate}">13/04/2003</span>
+      </p>
+
+      <p>
+        <strong>Tipo de Pessoa:</strong>
+        <span th:text="${type == 'J'} ? 'Jurídica' : 'Física'">Tipo</span>
+      </p>
+
+      <p th:if="${email}">
+        <strong>E-mail:</strong>
+        <span th:text="${email}">email@exemplo.com</span>
+      </p>
+
+      <p th:if="${phone}">
+        <strong>Telefone:</strong>
+        (<span th:text="${areaCode}">00</span>)
+        <span th:text="${phone}">000000000</span>
+      </p>
+      <p>
+        <strong>Endereço:</strong>
+        <span th:text="${address}">Rua Exemplo, 123</span> -
+        <span th:text="${neighborhood}">Bairro</span>,
+        <span th:text="${city}">Cidade</span> -
+        <span th:text="${state}">UF</span>
+      </p>
+
+      <p><strong>CEP:</strong> <span th:text="${zipCode}">00000-000</span></p>
+
+      <p th:if="${country}">
+        <strong>País:</strong> <span th:text="${country}">Brasil</span>
+      </p>
+
+      <hr />
+      <p class="footer">
+        Este e-mail foi gerado automaticamente por <strong>Maiconsoft</strong>.
+      </p>
+    </div>
+  </body>
+</html>
