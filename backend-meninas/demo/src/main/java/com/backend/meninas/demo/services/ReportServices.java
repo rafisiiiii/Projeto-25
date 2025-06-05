@@ -20,7 +20,7 @@ public class ReportServices {
     }
 
     public byte[] generateClientsReportExcel() throws IOException {
-        List<Client> clients = clientRepository.findAll(); // Busca todos os clientes
+        List<Client> clients = clientRepository.findAll(); 
 
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             Sheet sheet = workbook.createSheet("Clientes");

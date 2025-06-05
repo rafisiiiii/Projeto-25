@@ -31,13 +31,13 @@ public class ClientServices {
      var _client = this.clientRepository.findByTaxId(dto.getTaxId());
         
      if(_client.isPresent()){
-      throw new BadRequestException("client with this taxId already exists");
+      throw new BadRequestException("Cliente com esse CNPJ/CPF já cadastrado");
      }
        
       var code = Utils.randomString(6, "a");  
       System.out.println(code);
       var author = this.userRepository.findById(dto.getAuthorId())
-      .orElseThrow(() -> new NotFoundException("invalid author id"));
+      .orElseThrow(() -> new NotFoundException("ID de autor inválido"));
 
       Client client = new Client(
         code,
@@ -70,7 +70,7 @@ public class ClientServices {
         var result = this.clientRepository.findByCode(dto.getCode());
         
         if(!result.isPresent()){
-            throw new NotFoundException("client not found");
+            throw new NotFoundException("Cliente não encontrado");
         }
 
         var client = result.get();
@@ -98,7 +98,7 @@ public class ClientServices {
 
     public void deleteClient(String code) throws NotFoundException {
        var client = this.clientRepository.findByCode(code)
-        .orElseThrow(() -> new NotFoundException("invalid client code, client not found"));
+        .orElseThrow(() -> new NotFoundException("Código de cliente inválido, cliente não encontrado"));
         this.clientRepository.delete(client);
     }
 
